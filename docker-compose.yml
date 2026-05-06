@@ -1,0 +1,46 @@
+services:
+  eureka-server:
+    build: eureka/
+    mem_limit: 512m
+    ports:
+      - "8761:8761"
+  gateway:
+    build: gateway/
+    mem_limit: 512m
+    ports:
+      - "8080:8080"
+    depends_on:
+      - eureka-server
+  vehicles-service:
+    build: vehiclesMicroservice/
+    mem_limit: 512m
+    ports:
+      - "8081:8081"
+    environment:
+      - DATABASE_URL=jdbc:postgresql://db:5432/postgres
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
+    depends_on:
+      - db
+      - eureka-server
+  operations-service:
+    build: operationsMicroservice/
+    mem_limit: 512m
+    ports:
+      - "8082:8082"
+    environment:
+      - DATABASE_URL=jdbc:postgresql://db:5432/postgres
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
+    depends_on:
+      - db
+      - eureka-server
+  db:
+    container_name: db
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
