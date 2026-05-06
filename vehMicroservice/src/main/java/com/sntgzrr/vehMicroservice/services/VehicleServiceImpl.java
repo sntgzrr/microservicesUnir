@@ -17,6 +17,9 @@ public class VehicleServiceImpl {
     public List<Veh> getVehicles () {
         return this.iVehiclesRepository.findAll();
     }
+    public Veh getVehById (Long id) {
+        return this.iVehiclesRepository.getReferenceById(id);
+    }
     public Veh saveVehicle (Veh veh) {
         return this.iVehiclesRepository.save(veh);
     }

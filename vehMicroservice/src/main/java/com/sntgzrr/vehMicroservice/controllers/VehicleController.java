@@ -20,6 +20,10 @@ public class VehicleController {
     public List<Veh> getVehicles() {
         return this.vehicleService.getVehicles();
     }
+    @GetMapping("/{id}")
+    public Veh getVehById (@PathVariable Long id) {
+        return this.vehicleService.getVehById(id);
+    }
     @PostMapping
     public Veh createVehicle (@RequestBody Veh veh) {
         return this.vehicleService.saveVehicle(veh);
