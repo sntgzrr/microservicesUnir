@@ -12,11 +12,11 @@ public class OperationServiceImpl {
 
     public String rental (Long vehId) {
         Veh veh = vehClient.getVeh(vehId);
-        if (!veh.isEstado()) {
+        if (!veh.getStatus()) {
             return "Vehículo no disponible";
         }
 
-        veh.setEstado(false);
+        veh.setStatus(false);
         vehClient.updateVeh(veh);
 
         return "Alquiler confirmado";
@@ -25,7 +25,7 @@ public class OperationServiceImpl {
     public String cancel(Long VehId) {
 
         Veh veh = vehClient.getVeh(VehId);
-        veh.setEstado(true);
+        veh.setStatus(true);
         vehClient.updateVeh(veh);
 
         return "Alquiler cancelado";

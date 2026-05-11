@@ -92,7 +92,6 @@ export function VehicleForm({ isOpen, onClose, onSubmit, vehicle = null }) {
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden">
-        {/* Header */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-6 text-white">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-bold">
@@ -107,10 +106,8 @@ export function VehicleForm({ isOpen, onClose, onSubmit, vehicle = null }) {
           </div>
         </div>
 
-        {/* Content */}
         <div className="p-6">
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Imagen/Emoji */}
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Selecciona un ícono
@@ -133,9 +130,7 @@ export function VehicleForm({ isOpen, onClose, onSubmit, vehicle = null }) {
               </div>
             </div>
 
-            {/* Grid 2 columnas */}
             <div className="grid grid-cols-2 gap-4">
-              {/* Marca */}
               <div>
                 <label htmlFor="brand" className="block text-sm font-semibold text-gray-700 mb-1">
                   Marca
@@ -152,7 +147,6 @@ export function VehicleForm({ isOpen, onClose, onSubmit, vehicle = null }) {
                 />
               </div>
 
-              {/* Modelo */}
               <div>
                 <label htmlFor="model" className="block text-sm font-semibold text-gray-700 mb-1">
                   Modelo
@@ -169,7 +163,6 @@ export function VehicleForm({ isOpen, onClose, onSubmit, vehicle = null }) {
                 />
               </div>
 
-              {/* Año */}
               <div>
                 <label htmlFor="year" className="block text-sm font-semibold text-gray-700 mb-1">
                   Año
@@ -185,7 +178,6 @@ export function VehicleForm({ isOpen, onClose, onSubmit, vehicle = null }) {
                 />
               </div>
 
-              {/* Placa */}
               <div>
                 <label htmlFor="licensePlate" className="block text-sm font-semibold text-gray-700 mb-1">
                   Placa
@@ -202,7 +194,6 @@ export function VehicleForm({ isOpen, onClose, onSubmit, vehicle = null }) {
                 />
               </div>
 
-              {/* Precio por día */}
               <div>
                 <label htmlFor="pricePerDay" className="block text-sm font-semibold text-gray-700 mb-1">
                   Precio/Día ($)
@@ -219,7 +210,6 @@ export function VehicleForm({ isOpen, onClose, onSubmit, vehicle = null }) {
                 />
               </div>
 
-              {/* Kilometraje */}
               <div>
                 <label htmlFor="mileage" className="block text-sm font-semibold text-gray-700 mb-1">
                   Kilometraje (km)
@@ -237,14 +227,12 @@ export function VehicleForm({ isOpen, onClose, onSubmit, vehicle = null }) {
               </div>
             </div>
 
-            {/* Error */}
             {error && (
               <div className="bg-red-50 border-l-4 border-red-500 p-3 rounded">
                 <p className="text-red-700 text-sm">⚠️ {error}</p>
               </div>
             )}
 
-            {/* Botones */}
             <div className="flex gap-3 pt-4">
               <button
                 type="button"

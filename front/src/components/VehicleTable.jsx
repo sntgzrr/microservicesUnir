@@ -16,7 +16,7 @@ export function VehicleTable({ vehicles, onEdit, onDelete }) {
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
-          {vehicles.map((vehicle, index) => (
+          {vehicles.map((vehicle) => (
             <tr
               key={vehicle.id}
               className="hover:bg-blue-50 transition-colors duration-200"
@@ -49,7 +49,7 @@ export function VehicleTable({ vehicles, onEdit, onDelete }) {
                       : "bg-red-100 text-red-700"
                   }`}
                 >
-                  {vehicle.status === "available" ? "✅ Disponible" : "🔴 Rentado"}
+                  {vehicle.status === true ? "✅ Disponible" : "🔴 Rentado"}
                 </span>
               </td>
               <td className="px-6 py-4">
@@ -63,7 +63,7 @@ export function VehicleTable({ vehicles, onEdit, onDelete }) {
                   </button>
                   <button
                     onClick={() => {
-                      if (vehicle.status === "rented") {
+                      if (vehicle.status === false) {
                         alert("No puedes eliminar un vehículo que está rentado")
                         return
                       }
@@ -72,7 +72,7 @@ export function VehicleTable({ vehicles, onEdit, onDelete }) {
                       }
                     }}
                     className="inline-flex items-center gap-2 px-3 py-2 bg-red-100 text-red-700 hover:bg-red-200 rounded-lg transition-colors font-semibold text-sm disabled:opacity-50"
-                    disabled={vehicle.status === "rented"}
+                    disabled={vehicle.status === false}
                   >
                     <Trash2 size={16} />
                     Eliminar

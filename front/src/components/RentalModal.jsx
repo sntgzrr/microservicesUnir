@@ -25,7 +25,6 @@ export function RentalModal({ isOpen, vehicle, onClose, onConfirm }) {
     }
 
     setLoading(true)
-    // Simular carga
     setTimeout(() => {
       onConfirm(customerName)
       setCustomerName("")
@@ -53,9 +52,7 @@ export function RentalModal({ isOpen, vehicle, onClose, onConfirm }) {
           </div>
         </div>
 
-        {/* Content */}
         <div className="p-6">
-          {/* Resumen del vehículo */}
           <div className="bg-gradient-to-br from-blue-50 to-transparent rounded-lg p-4 mb-6 border border-blue-100">
             <div className="flex items-center gap-4">
               <div className="text-4xl">{vehicle.image}</div>
@@ -71,13 +68,11 @@ export function RentalModal({ isOpen, vehicle, onClose, onConfirm }) {
             </div>
           </div>
 
-          {/* Fecha actual */}
           <div className="bg-gray-50 rounded-lg p-4 mb-6 border border-gray-200">
             <p className="text-xs text-gray-600 font-semibold uppercase mb-1">Fecha de Alquiler</p>
             <p className="text-lg font-bold text-gray-900 capitalize">{formattedDate}</p>
           </div>
 
-          {/* Formulario */}
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
@@ -102,7 +97,6 @@ export function RentalModal({ isOpen, vehicle, onClose, onConfirm }) {
               )}
             </div>
 
-            {/* Botones */}
             <div className="flex gap-3">
               <button
                 type="button"
@@ -131,7 +125,6 @@ export function RentalModal({ isOpen, vehicle, onClose, onConfirm }) {
             </div>
           </form>
 
-          {/* Footer info */}
           <p className="text-xs text-gray-500 text-center mt-4">
             Al confirmar, aceptas nuestros términos y condiciones de alquiler
           </p>

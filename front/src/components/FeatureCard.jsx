@@ -3,7 +3,6 @@ import { Sparkles } from "lucide-react"
 export function FeatureCard({ icon, title, description }) {
   return (
     <div className="group relative bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 border-t-4 border-blue-500 overflow-hidden">
-      {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       
       <div className="relative z-10">

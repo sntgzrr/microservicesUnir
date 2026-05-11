@@ -28,7 +28,6 @@ export function Carousel({ items, autoPlay = true, autoPlayInterval = 5000 }) {
 
   return (
     <div className="relative w-full h-96 md:h-96 bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
-      {/* Slides */}
       <div className="relative w-full h-full">
         {items.map((item, index) => (
           <div
@@ -53,7 +52,6 @@ export function Carousel({ items, autoPlay = true, autoPlayInterval = 5000 }) {
         ))}
       </div>
 
-      {/* Navigation Buttons */}
       <button
         onClick={prev}
         className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-all backdrop-blur-sm"
@@ -67,7 +65,6 @@ export function Carousel({ items, autoPlay = true, autoPlayInterval = 5000 }) {
         <ChevronRight size={28} />
       </button>
 
-      {/* Dots */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-2">
         {items.map((_, index) => (
           <button

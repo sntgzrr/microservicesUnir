@@ -8,7 +8,6 @@ export function StatBox({ label, value, icon, color }) {
         background: `linear-gradient(135deg, ${color} 0%, ${color}dd 100%)`
       }}
     >
-      {/* Animated background */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-white transition-opacity duration-300" />
       
       <div className="relative z-10">

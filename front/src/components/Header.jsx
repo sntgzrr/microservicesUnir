@@ -11,8 +11,8 @@ export function Header() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 backdrop-blur-md border-b border-blue-500/20 shadow-lg">
         <div className="container mx-auto px-4">
+          {/* Desktop Navigation */}
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
             <div className="flex items-center space-x-3">
               <img 
                 onClick={() => navigate('/')} 
@@ -46,8 +46,6 @@ export function Header() {
                 <span>⚙️ Gestión</span>
               </button>
             </nav>
-
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden text-blue-400 p-2 hover:bg-blue-500/10 rounded-lg transition-all"

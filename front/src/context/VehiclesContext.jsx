@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useCallback } from 'react'
 import { vehiclesData as initialVehiclesData } from '../data/vehiclesData'
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const VehiclesContext = createContext()
 
 const vehiclesReducer = (state, action) => {
@@ -28,12 +29,12 @@ const vehiclesReducer = (state, action) => {
           : vehicle
       )
     case 'ADD_VEHICLE':
-      const newVehicle = {
+      { const newVehicle = {
         ...action.payload,
         id: Math.max(...state.map(v => v.id), 0) + 1,
         status: 'available'
       }
-      return [...state, newVehicle]
+      return [...state, newVehicle] }
     case 'UPDATE_VEHICLE':
       return state.map(vehicle =>
         vehicle.id === action.payload.id
@@ -99,6 +100,7 @@ export function VehiclesProvider({ children }) {
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useVehicles() {
   const context = React.useContext(VehiclesContext)
   if (!context) {

@@ -13,8 +13,8 @@ export function Vehicles() {
   const filteredVehicles = vehicles.filter((vehicle) => {
     const matchesFilter = 
       filter === "all" ||
-      (filter === "available" && vehicle.status === "available") ||
-      (filter === "rented" && vehicle.status === "rented");
+      (filter === "available" && vehicle.status === true) ||
+      (filter === "rented" && vehicle.status === false);
 
     const matchesSearch =
       vehicle.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -24,8 +24,8 @@ export function Vehicles() {
     return matchesFilter && matchesSearch;
   });
 
-  const availableCount = vehicles.filter((v) => v.status === "available").length;
-  const rentedCount = vehicles.filter((v) => v.status === "rented").length;
+  const availableCount = vehicles.filter((v) => v.status === true).length;
+  const rentedCount = vehicles.filter((v) => v.status === false).length;
 
   return (
     <>
@@ -45,7 +45,6 @@ export function Vehicles() {
             </p>
           </div>
 
-          {/* Estadísticas mejoradas */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
             <StatBox
               label="Vehículos Totales"

@@ -13,8 +13,8 @@ export function GestionVehiculos() {
   const [successMessage, setSuccessMessage] = useState("")
 
   const filteredVehicles = vehicles.filter(vehicle => {
-    if (filter === "available") return vehicle.status === "available"
-    if (filter === "rented") return vehicle.status === "rented"
+    if (filter === "available") return vehicle.status === true
+    if (filter === "rented") return vehicle.status === false
     return true
   })
 
@@ -53,15 +53,14 @@ export function GestionVehiculos() {
     setTimeout(() => setSuccessMessage(""), 3000)
   }
 
-  const availableCount = vehicles.filter(v => v.status === "available").length
-  const rentedCount = vehicles.filter(v => v.status === "rented").length
+  const availableCount = vehicles.filter(v => v.status === true).length
+  const rentedCount = vehicles.filter(v => v.status === false).length
 
   return (
     <>
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 py-8 mt-20">
         <div className="container mx-auto px-4 max-w-7xl">
-          {/* Encabezado */}
           <div className="mb-8">
             <div className="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
               ⚙️ Administración
@@ -74,7 +73,6 @@ export function GestionVehiculos() {
             </p>
           </div>
 
-          {/* Mensaje de éxito */}
           {successMessage && (
             <div className="mb-6 p-4 bg-green-100 border-l-4 border-green-500 text-green-700 rounded-lg flex items-center gap-2">
               <span>✅</span>
@@ -82,7 +80,6 @@ export function GestionVehiculos() {
             </div>
           )}
 
-          {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-500">
               <p className="text-gray-600 text-sm font-semibold mb-2">Total Vehículos</p>
@@ -98,7 +95,6 @@ export function GestionVehiculos() {
             </div>
           </div>
 
-          {/* Botones de acción */}
           <div className="mb-8 flex flex-col md:flex-row gap-4">
             <button
               onClick={handleAddClick}
@@ -108,7 +104,6 @@ export function GestionVehiculos() {
               Agregar Vehículo
             </button>
 
-            {/* Filtros */}
             <div className="flex gap-2">
               <div className="flex items-center gap-2 text-gray-600 font-semibold">
                 <Filter size={18} />
@@ -147,14 +142,12 @@ export function GestionVehiculos() {
             </div>
           </div>
 
-          {/* Tabla de vehículos */}
           <VehicleTable
             vehicles={filteredVehicles}
             onEdit={handleEditClick}
             onDelete={handleDeleteVehicle}
           />
 
-          {/* Info adicional */}
           <div className="mt-8 bg-gradient-to-r from-purple-600 to-purple-800 rounded-2xl shadow-lg p-8 text-white">
             <h3 className="text-2xl font-bold mb-3">💡 Consejos de Gestión</h3>
             <ul className="space-y-2 text-purple-100">
@@ -167,7 +160,6 @@ export function GestionVehiculos() {
         </div>
       </div>
 
-      {/* Form Modal */}
       <VehicleForm
         isOpen={isFormOpen}
         onClose={handleFormClose}

@@ -17,6 +17,4 @@ public class Veh {
     Integer pricePerDay;
     Integer mileage;
     String image;
-    String rentedBy;
-    String rentalDate;
 }

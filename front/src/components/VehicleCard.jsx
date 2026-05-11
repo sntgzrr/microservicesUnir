@@ -1,25 +1,12 @@
 import { useState } from "react"
-import { MapPin, Gauge } from "lucide-react"
+import { Gauge } from "lucide-react"
 import { RentalModal } from "./RentalModal"
-import { useVehicles } from "../context/VehiclesContext"
 
 export function VehicleCard({ vehicle }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const { rentVehicle, returnVehicle } = useVehicles()
-  const isAvailable = vehicle.status === "available"
+  const [ isAvailable, setIsAvailable ] = useState(vehicle.status)
   const statusBadgeColor = isAvailable ? "bg-green-500" : "bg-red-500"
   const statusText = isAvailable ? "Disponible" : "Rentado"
-
-  const handleRental = (customerName) => {
-    rentVehicle(vehicle.id, customerName)
-    setIsModalOpen(false)
-  }
-
-  const handleReturn = () => {
-    if (window.confirm(`¿Devolver el vehículo ${vehicle.brand} ${vehicle.model}?`)) {
-      returnVehicle(vehicle.id)
-    }
-  }
 
   return (
     <>
@@ -82,27 +69,18 @@ export function VehicleCard({ vehicle }) {
             </div>
           </div>
 
-          {/* Información de renta si está rentado */}
-          {!isAvailable && (
-            <div className="bg-gradient-to-br from-red-50 to-orange-50 p-4 rounded-lg mb-4 border border-red-100">
-              <p className="text-xs text-gray-600 font-semibold mb-2">📍 RENTADO POR</p>
-              <p className="font-bold text-gray-900">{vehicle.rentedBy}</p>
-              <p className="text-xs text-gray-600 mt-1">Desde {vehicle.rentalDate}</p>
-            </div>
-          )}
-
           {/* Buttons */}
           <div className="flex gap-2">
             {isAvailable ? (
               <button
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => setIsAvailable(false)}
                 className="flex-1 py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-md bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white"
               >
                 🚗 Rentar Ahora
               </button>
             ) : (
               <button
-                onClick={handleReturn}
+                onClick={() => setIsAvailable(true)}
                 className="flex-1 py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-md bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
               >
                 ↩️ Devolver
@@ -117,7 +95,6 @@ export function VehicleCard({ vehicle }) {
         isOpen={isModalOpen}
         vehicle={vehicle}
         onClose={() => setIsModalOpen(false)}
-        onConfirm={handleRental}
       />
     </>
   );

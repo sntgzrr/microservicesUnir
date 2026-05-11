@@ -32,8 +32,4 @@ public class Veh implements Serializable {
     Integer mileage;
     @Column (name = "image")
     String image;
-    @Column(name = "rentedBy")
-    String rentedBy;
-    @Column(name = "rentalDate")
-    String rentalDate;
 }
