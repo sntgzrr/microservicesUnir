@@ -16,10 +16,18 @@ public class Veh implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     Long id;
-    @Column(name = "marca")
-    String marca;
-    @Column(name = "modelo")
-    String modelo;
-    @Column(name = "estado")
-    Boolean estado;
+    @Column(name = "brand")
+    String brand;
+    @Column(name = "model")
+    String model;
+    @Column(name = "status")
+    Boolean status;
+    @Column(name = "year")
+    Integer year;
+    @Column(name = "licensePlate")
+    String licensePlate;
+    @Column(name = "pricePerDay")
+    Integer pricePerDay;
+    @Column (name = "mileage")
+    Integer mileage;
 }
