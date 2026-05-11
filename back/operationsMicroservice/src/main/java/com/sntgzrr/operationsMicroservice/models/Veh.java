@@ -1,5 +1,6 @@
 package com.sntgzrr.operationsMicroservice.models;
 
+import jakarta.persistence.Column;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -8,7 +9,14 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Veh {
     Long id;
-    String marca;
-    String modelo;
-    boolean estado;
+    String brand;
+    String model;
+    Boolean status;
+    Integer year;
+    String licensePlate;
+    Integer pricePerDay;
+    Integer mileage;
+    String image;
+    String rentedBy;
+    String rentalDate;
 }
