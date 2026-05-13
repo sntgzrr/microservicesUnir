@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { X } from "lucide-react"
+import { createVehicle, updateVehicle } from "../services/vehiclesService"
 
 export function VehicleForm({ isOpen, onClose, onSubmit, vehicle = null }) {
   const [formData, setFormData] = useState({
@@ -73,16 +74,34 @@ export function VehicleForm({ isOpen, onClose, onSubmit, vehicle = null }) {
     return true
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!validateForm()) return
 
     setLoading(true)
-    setTimeout(() => {
-      onSubmit(formData)
+    try {
+      if (!vehicle) {
+        const result = await createVehicle(formData)
+        if (result) {
+          onSubmit(result)
+        } else {
+          onSubmit(formData)
+        }
+      } else {
+        const updatedData = { ...formData, id: vehicle.id }
+        const result = await updateVehicle(updatedData)
+        if (result) {
+          onSubmit(result)
+        } else {
+          onSubmit(updatedData)
+        }
+      }
       setLoading(false)
       onClose()
-    }, 300)
+    } catch (err) {
+      setError("Error al guardar el vehículo: " + err.message)
+      setLoading(false)
+    }
   }
 
   if (!isOpen) return null

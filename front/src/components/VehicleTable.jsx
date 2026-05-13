@@ -63,7 +63,7 @@ export function VehicleTable({ vehicles, onEdit, onDelete }) {
                   </button>
                   <button
                     onClick={() => {
-                      if (vehicle.status === true) {
+                      if (vehicle.status === false) {
                         alert("No puedes eliminar un vehículo que está rentado")
                         return
                       }
@@ -72,7 +72,7 @@ export function VehicleTable({ vehicles, onEdit, onDelete }) {
                       }
                     }}
                     className="inline-flex items-center gap-2 px-3 py-2 bg-red-100 text-red-700 hover:bg-red-200 rounded-lg transition-colors font-semibold text-sm disabled:opacity-50"
-                    disabled={vehicle.status === true}
+                    disabled={vehicle.status === false}
                   >
                     <Trash2 size={16} />
                     Eliminar
