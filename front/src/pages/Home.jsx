@@ -3,16 +3,16 @@ import { VehicleCard } from "../components/VehicleCard"
 import { Carousel } from "../components/Carousel"
 import { FeatureCard } from "../components/FeatureCard"
 import { StatBox } from "../components/StatBox"
-import { useVehicles } from "../context/VehiclesContext"
 import { useNavigate } from "react-router-dom"
 import { ArrowRight, MapPin, Users, Award } from "lucide-react"
+import { useFetchingVehicles } from "../hooks/useServices"
 
 export function Home() {
     const navigate = useNavigate()
-    const { vehicles } = useVehicles()
+    const { vehicles } = useFetchingVehicles();
 
-    const availableVehicles = vehicles.filter(v => v.status === "available")
-    const rentedVehicles = vehicles.filter(v => v.status === "rented")
+    const availableVehicles = vehicles.filter(v => v.status === true)
+    const rentedVehicles = vehicles.filter(v => v.status === false)
     const featuredVehicles = vehicles.slice(0, 3)
 
     // Datos para el carrusel

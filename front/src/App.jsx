@@ -1,13 +1,8 @@
 import './App.css'
 import { PageRoutes } from './routes/PageRoutes.jsx'
-import { VehiclesProvider } from './context/VehiclesContext'
 
 function App() {
-  return (
-    <VehiclesProvider>
-      <PageRoutes />
-    </VehiclesProvider>
-  )
+  return <PageRoutes />
 }
 
 export default App

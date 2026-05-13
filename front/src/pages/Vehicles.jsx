@@ -1,12 +1,12 @@
 import { Header } from "../components/Header";
 import { VehicleCard } from "../components/VehicleCard";
 import { StatBox } from "../components/StatBox";
-import { useVehicles } from "../context/VehiclesContext";
+import { useFetchingVehicles } from "../hooks/useServices";
 import { useState } from "react";
 import { Search, Filter } from "lucide-react";
 
 export function Vehicles() {
-  const { vehicles } = useVehicles();
+  const { vehicles } = useFetchingVehicles();
   const [filter, setFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
 

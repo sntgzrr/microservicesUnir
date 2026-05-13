@@ -2,11 +2,11 @@ import { useState } from "react"
 import { Header } from "../components/Header"
 import { VehicleForm } from "../components/VehicleForm"
 import { VehicleTable } from "../components/VehicleTable"
-import { useVehicles } from "../context/VehiclesContext"
+import { useFetchingVehicles } from "../hooks/useServices"
 import { Plus, Filter } from "lucide-react"
 
 export function GestionVehiculos() {
-  const { vehicles, addVehicle, updateVehicle, deleteVehicle } = useVehicles()
+  const { vehicles, setVehicles } = useFetchingVehicles()
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [editingVehicle, setEditingVehicle] = useState(null)
   const [filter, setFilter] = useState("all")
@@ -30,16 +30,27 @@ export function GestionVehiculos() {
 
   const handleFormSubmit = (formData) => {
     if (editingVehicle) {
-      updateVehicle(editingVehicle.id, formData)
+      setVehicles(current => current.map(vehicle =>
+        vehicle.id === editingVehicle.id
+          ? { ...vehicle, ...formData }
+          : vehicle
+      ))
       showSuccess("Vehículo actualizado correctamente")
     } else {
-      addVehicle(formData)
+      setVehicles(current => [
+        ...current,
+        {
+          ...formData,
+          id: Math.max(...current.map(v => v.id), 0) + 1,
+          status: true
+        }
+      ])
       showSuccess("Vehículo agregado correctamente")
     }
   }
 
   const handleDeleteVehicle = (vehicleId) => {
-    deleteVehicle(vehicleId)
+    setVehicles(current => current.filter(vehicle => vehicle.id !== vehicleId))
     showSuccess("Vehículo eliminado correctamente")
   }
 
