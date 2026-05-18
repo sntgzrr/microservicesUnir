@@ -14,6 +14,7 @@ export async function getVehicles() {
 
 export async function createVehicle(vehicleData) {
     try {
+        vehicleData.status = true;
         const response = await api.post(`${DOMAIN_URL}/veh`, vehicleData);
         return response.data;
     } catch (error) {
