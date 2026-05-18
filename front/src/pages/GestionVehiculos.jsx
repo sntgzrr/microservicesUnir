@@ -4,6 +4,7 @@ import { VehicleForm } from "../components/VehicleForm"
 import { VehicleTable } from "../components/VehicleTable"
 import { useFetchingVehicles } from "../hooks/useServices"
 import { Plus, Filter } from "lucide-react"
+import { deleteVehicle } from "../services/vehiclesService"
 
 export function GestionVehiculos() {
   const { vehicles, setVehicles } = useFetchingVehicles()
@@ -49,9 +50,15 @@ export function GestionVehiculos() {
     }
   }
 
-  const handleDeleteVehicle = (vehicleId) => {
-    setVehicles(current => current.filter(vehicle => vehicle.id !== vehicleId))
-    showSuccess("Vehículo eliminado correctamente")
+  const handleDeleteVehicle = async (vehicleId) => {
+    try {
+      await deleteVehicle(vehicleId)
+      setVehicles(current => current.filter(vehicle => vehicle.id !== vehicleId))
+      showSuccess("Vehículo eliminado correctamente")  
+    } catch (error) {
+      console.error("Error deleting vehicle:", error)
+      return
+    }
   }
 
   const handleFormClose = () => {

@@ -88,7 +88,7 @@ export function VehicleForm({ isOpen, onClose, onSubmit, vehicle = null }) {
           onSubmit(formData)
         }
       } else {
-        const updatedData = { ...formData, id: vehicle.id }
+        const updatedData = { ...formData, id: vehicle.id, status: vehicle.status }
         const result = await updateVehicle(updatedData)
         if (result) {
           onSubmit(result)

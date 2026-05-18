@@ -30,3 +30,12 @@ export async function updateVehicle(vehicleData) {
         console.error("Error updating vehicle:", error);
     }
 }
+
+export async function deleteVehicle(vehicleId) {
+    try {
+        const response = await api.delete(`${DOMAIN_URL}/veh/${vehicleId}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error deleting vehicle:", error);
+    }
+}
