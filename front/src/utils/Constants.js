@@ -1,1 +1,1 @@
-export const DOMAIN_URL = ""
+export const DOMAIN_URL = "http://localhost:8080";
